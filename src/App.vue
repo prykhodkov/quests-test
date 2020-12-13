@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Home />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from '@/views/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home
+  },
+  created() {
+    let todoList = JSON.stringify([
+      {
+        finished: true,
+        title: 'Feed the cat',
+      },
+      {
+        finished: true,
+        title: 'Cuddle the cat',
+      },
+      {
+        finished: false,
+        title: 'Play with cat',
+      },
+      {
+        finished: false,
+        title: 'Clean after the cat',
+      },
+    ])
+    localStorage.setItem('todoList', todoList)
   }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #111;
 }
 </style>
